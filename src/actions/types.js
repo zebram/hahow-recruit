@@ -1,0 +1,4 @@
+export const FETCH_HEROS = 'FETCH_HEROS';
+export const FETCH_HERO_PROFILE = 'FETCH_HERO_PROFILE';
+export const CLEAR_HEROS = 'CLEAR_HEROS';
+export const CLEAR_HERO_PROFILE = 'CLEAR_HERO_PROFILE';
