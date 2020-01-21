@@ -8,10 +8,13 @@ import {
 import api from '../api';
 
 export function fetchHeros(){
-    console.log('fetchHeros');
-    return {
-        type: FETCH_HEROS,
-        data: api.fetchHeros()
+    return function(dispatch) {
+        return api.fetchHeros().then(
+            response => dispatch({
+                type: FETCH_HEROS,
+                data: response,
+            })
+        )
     }
 }
 

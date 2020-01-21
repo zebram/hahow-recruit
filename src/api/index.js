@@ -2,17 +2,17 @@ import axios from 'axios';
 
 export default {
     fetchHeros: () => {
-        axios.get(
+        return axios.get(
             'https://hahow-recruit.herokuapp.com/heroes'
         ).then(
-            response => console.log(response)
+            response => response.data
         )
     },
     fetchHeroProfile: (id) => {
-        axios.get(
+        return axios.get(
             `https://hahow-recruit.herokuapp.com/heroes/${ id }/profile`
         ).then(
-            response => console.log(response)
+            response => response.data
         )
     },
 };
