@@ -4,11 +4,10 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    heros: [],
+    data: [],
 };
 
 const data = (state = initialState, action) => {
-    console.log(action);
     switch (action.type) {
     case FETCH_HEROS:
         return action.data;

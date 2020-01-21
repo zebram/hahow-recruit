@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    heroProfile: {},
+    data: {},
 };
 
 const data = (state = initialState, action) => {
