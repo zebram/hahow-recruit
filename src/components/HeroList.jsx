@@ -4,14 +4,18 @@ import './heroList.css';
 
 class HeroList extends React.Component{
     render() {
-        const { heros } = this.props;
+        const { heros, selectId } = this.props;
         return (
             <div className="hero-list">
                 {
-                    heros.data.map(
+                    heros.map(
                         hero => {
                             const { id } = hero;
-                            return <HeroCard key={ id } { ...hero }/>
+                            return id === selectId ? (
+                                <HeroCard key={ id } selected { ...hero }/>
+                            ) : (
+                                <HeroCard key={ id } { ...hero }/>
+                            )
                         }
                     )
                 }

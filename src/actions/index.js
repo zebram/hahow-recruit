@@ -26,9 +26,13 @@ export function clearHeros(){
 }
 
 export function fetchHeroProfile(id){
-    return {
-        type: FETCH_HERO_PROFILE,
-        data: api.fetchHeroProfile(id)
+    return function(dispatch) {
+        return api.fetchHeroProfile(id).then(
+            response => dispatch({
+                type: FETCH_HERO_PROFILE,
+                data: response,
+            })
+        )
     }
 }
 

@@ -1,6 +1,5 @@
 .hero-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-grow: 1;
+    display: inline-block;
+    border: 3px solid #000;
+    margin: 10px 5px;
 }

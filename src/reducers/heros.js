@@ -3,9 +3,7 @@ import {
     CLEAR_HEROS,
 } from '../actions/types';
 
-const initialState = {
-    data: [],
-};
+const initialState = [];
 
 const data = (state = initialState, action) => {
     switch (action.type) {

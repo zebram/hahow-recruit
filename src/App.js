@@ -6,7 +6,6 @@ import {
   Redirect,
   useParams,
 } from 'react-router-dom';
-import ListView from './views/List';
 import ProfileView from './views/Profile';
 import './App.css';
 
@@ -19,7 +18,7 @@ function App() {
             <HeroProfileView />
           </Route>
           <Route path="/heros">
-            <ListView />
+            <HeroProfileView />
           </Route>
           <Route path="/">
             <Redirect to="/heros" />
