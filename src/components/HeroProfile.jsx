@@ -81,7 +81,7 @@ class HeroProfile extends React.Component {
                 {
                     this.renderAttrTable(attributes)
                 }
-                <div className="">
+                <div className="hero-profile-control">
                     <div>
                         <label>剩餘點數:{ remains }</label>
                     </div>

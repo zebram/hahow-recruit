@@ -9,5 +9,11 @@
     height: auto;
 }
 .selected {
-    background: yellow;
+    background: #007bff;
+    color: #FFF;
+    font-weight: bold;
+}
+.selected:hover {
+    background: #0069d9;
+    color: #FFF;
 }

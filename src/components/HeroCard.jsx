@@ -12,7 +12,7 @@ class HeroCard extends React.Component{
         )
         return (
             <Link key={ id } className={ styles } to={ `/heros/${ id }` }>
-                <img className="hero-image" src={ image } />
+                <img className="hero-image" src={ image } alt={ `${ name } image` }/>
                 <div>
                     { name }
                 </div>
