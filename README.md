@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 如何執行
 
 In the project directory, you can run:
 
@@ -37,32 +37,37 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 專案說明
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 專案的架構
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+router存在於App,決定url跟view的喧染. view的內容從components 組成.
+api在view裡呼叫,回傳的資料存於store,由Provider (index.js) 提供給需要的子components.
+components/HeroProfile 擁有state,用來記錄更改中尚未儲存的資料.
 
-### Code Splitting
+### 第三方package
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+axios: make XMLHttpRequests request and supports the Promise API
+classnames: an easy way to set className for components
+react-bootstrap: for styling, layout, and ready to use components
+react-router-dom: for routing
+react-redux: official react binding for redux
+redux-thunk: allows async control in redux
 
-### Analyzing the Bundle Size
+### 註解
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+基於KISS的原則,程式碼希望盡量簡單易懂. 
+一般會下註解,除非有較為混淆的邏輯,不明原因的問題,或者程式碼可以改進的方向.
 
-### Making a Progressive Web App
+### 問題
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Hero List Page, Hero Profile Page 都有 HeroList component. 如何切換頁時不會造成HeroList rerender. 什麼時候fetch跟clear Hero List的資料.
 
-### Advanced Configuration
+Hero Profile Page可以想成當 Hero List Page 的 HeroList被點選時 HeroProfile會出現. 如果這樣想 ＨeroList的狀態自然而然就會被保留下來, fetch跟clear Hero List資料的時機也變得單純許多. 所以我讓Hero List Page, Hero Profile Page都由同一個view component實作. 並將HeroProfile呈現的邏輯放在裡面.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
