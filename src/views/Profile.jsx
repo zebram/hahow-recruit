@@ -2,7 +2,7 @@ import React from 'react';
 import HeroList from '../components/HeroList';
 import HeroProfile from '../components/HeroProfile';
 import { connect } from 'react-redux';
-import { fetchHeros, clearHeros, fetchHeroProfile, clearHeroProfile } from '../actions';
+import { fetchHeros, clearHeros, fetchHeroProfile, updateHeroProfile,clearHeroProfile } from '../actions';
 import './profile.css';
 
 class Profile extends React.Component {
@@ -20,16 +20,22 @@ class Profile extends React.Component {
         dispatch(clearHeros());
         dispatch(clearHeroProfile());
     }
+    handleProfileUpdate = id => attributes => {
+        const { dispatch } = this.props;
+        dispatch(updateHeroProfile(id, attributes));
+    }
     render() {
         const { heros, heroProfile, profileId } = this.props;
-        return profileId ? (
+        return (
             <div className="profile-page">
                 <HeroList heros={ heros } selectId={ profileId } />
-                <HeroProfile profile={ heroProfile } />
-            </div>
-        ) : (
-            <div className="profile-page">
-                <HeroList heros={ heros }/>
+                {
+                    profileId ? 
+                        <HeroProfile 
+                            profile={ heroProfile } 
+                            onSubmit={ this.handleProfileUpdate(profileId) } 
+                        /> : null
+                }
             </div>
         );
     }

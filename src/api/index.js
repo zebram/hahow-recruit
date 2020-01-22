@@ -15,4 +15,10 @@ export default {
             response => response.data
         )
     },
+    updateHeroProfile: (id, param) => {
+        return axios.patch(
+            `https://hahow-recruit.herokuapp.com/heroes/${ id }/profile`,
+            param
+        )
+    },
 };

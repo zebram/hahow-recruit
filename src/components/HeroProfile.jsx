@@ -2,7 +2,6 @@ import React from 'react';
 import './heroProfile.css';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-
 class HeroProfile extends React.Component {
     constructor(props) {
         super(props);
@@ -14,7 +13,8 @@ class HeroProfile extends React.Component {
     componentWillReceiveProps(nextProps) {
         const { profile } = nextProps;
         this.setState({
-            attributes: profile
+            attributes: profile,
+            remains: 0
         });
     }
     
@@ -38,31 +38,25 @@ class HeroProfile extends React.Component {
                     <label>{ name }</label>
                 </Col>
                 <Col>
-                    {
-                        remains ? (
-                            <Button 
-                                variant="outline-secondary" 
-                                onClick={ () => this.handleAttrChange(name, true) }
-                            >+</Button>
-                        ) : (
-                            <Button variant="outline-secondary" disabled>+</Button>
-                        )
-                    }
+                    <Button 
+                        variant="outline-secondary" 
+                        onClick={ () => this.handleAttrChange(name, true) }
+                        disabled={ remains <= 0 }
+                    >
+                        +
+                    </Button>
                 </Col>
                 <Col>
                     <label>{ value }</label>
                 </Col>
                 <Col>
-                    {
-                        value ? (
-                            <Button 
-                                variant="outline-secondary" 
-                                onClick={ () => this.handleAttrChange(name, false)}
-                            >-</Button> 
-                        ) : (
-                            <Button variant="outline-secondary" disabled>-</Button>
-                        )
-                    }
+                    <Button 
+                        variant="outline-secondary" 
+                        onClick={ () => this.handleAttrChange(name, false)}
+                        disabled={ value <= 0 }
+                    >
+                        -
+                    </Button> 
                 </Col>
             </Row>
         );
@@ -81,8 +75,9 @@ class HeroProfile extends React.Component {
 
     render() {
         const { remains, attributes } = this.state;
+        const { onSubmit } = this.props;
         return attributes ? (
-            <form className="hero-profile">
+            <form className="hero-profile" action="#" onSubmit={ () => onSubmit(attributes) }>
                 {
                     this.renderAttrTable(attributes)
                 }
@@ -91,17 +86,12 @@ class HeroProfile extends React.Component {
                         <label>剩餘點數:{ remains }</label>
                     </div>
                     <div>
-                        {
-                            remains ? (
-                                <Button disabled>Save</Button>
-                            ) : (
-                                <Button 
-                                    onClick={
-                                        () => {}
-                                    }
-                                >Save</Button>
-                            )
-                        }
+                        <Button 
+                            type="submit"
+                            disabled={ remains }
+                        >
+                            Save
+                        </Button>
                     </div>
                 </div>
             </form>

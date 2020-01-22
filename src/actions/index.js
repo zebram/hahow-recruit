@@ -36,6 +36,14 @@ export function fetchHeroProfile(id){
     }
 }
 
+export function updateHeroProfile(id, param){
+    return function(dispatch) {
+        return api.updateHeroProfile(id, param).then(
+            response => dispatch(fetchHeroProfile(id))
+        )
+    }
+}
+
 export function clearHeroProfile(){
     return {
         type: CLEAR_HERO_PROFILE,
